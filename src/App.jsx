@@ -47,36 +47,41 @@ const App = () => {
         </div>
 
         {
-          weatherdata && (
-            <>
-            <div className="weather-image">
-            <img
-                src={`https://openweathermap.org/img/wn/${weatherdata.weather[0].icon}@2x.png`}
-                alt="Weather icon"
-              />
-              <div className='desc'>{weatherdata.weather[0].description}</div>
-        </div>
-        <div className="temprature-city"><p className='temp'>{Math.round(weatherdata.main.temp)}°c</p><p className='city'>{weatherdata.name}</p></div>
-        <div className="humidity-windSpeed">
-          <div className="humidity">
-            <WiHumidity className='hw-logo'/>
+  weatherdata && weatherdata.main && (
+    <>
+      <div className="weather-image">
+        <img
+          src={`https://openweathermap.org/img/wn/${weatherdata.weather[0].icon}@2x.png`}
+          alt="Weather icon"
+        />
+        <div className="desc">{weatherdata.weather[0].description}</div>
+      </div>
+
+      <div className="temprature-city">
+        <p className="temp">{Math.round(weatherdata.main.temp)}°C</p>
+        <p className="city">{weatherdata.name}</p>
+      </div>
+
+      <div className="humidity-windSpeed">
+        <div className="humidity">
+          <WiHumidity className="hw-logo" />
           <div className="humidity-data">
-          <span className='hw-value'>{weatherdata.main.humidity}%</span>
-          <span className='hw-name'>Humidity</span>
+            <span className="hw-value">{weatherdata.main.humidity}%</span>
+            <span className="hw-name">Humidity</span>
           </div>
-          </div>
-        
+        </div>
+
         <div className="wind">
-          <FaWind  className='hw-logo'/>
+          <FaWind className="hw-logo" />
           <div className="wind-data">
-          <span className='hw-value'>{weatherdata.wind.speed} km/h</span>
-          <span className='hw-name'>Wind Speed</span>
+            <span className="hw-value">{weatherdata.wind.speed} km/h</span>
+            <span className="hw-name">Wind Speed</span>
           </div>
         </div>
-        </div>
-            </>
-          )
-        }
+      </div>
+    </>
+  )
+}
       </div>
     </div>
   )
